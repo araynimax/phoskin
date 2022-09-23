@@ -1,7 +1,7 @@
-compiled/
 include/
 !include/ripext*
 !include/PTaH.inc
 build-phoskin.sh
 compile*
+!compiled/
 spcomp*
