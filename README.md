@@ -49,8 +49,8 @@
 
 ## About The Project
 
-We all new the videos where people are just using commands like !gen or !i to inspect potential crafts or existing skins. 
-A found about broskins server somewhat later and since I have a own server for me and the boys (Mainly for practice mode) I thought it would be nice to have this feature there too.
+We all know the videos where people are just using commands like !gen or !i to inspect potential crafts or existing skins. 
+I've found out about broskins server somewhat later and since I have a own server for me and the boys (Mainly for practice mode) I thought it would be nice to have this feature there too.
 
 I thought I could just grab a plugin online and use it but I didnt find a good one that I like.
 
