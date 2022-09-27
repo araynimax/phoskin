@@ -95,7 +95,7 @@ Info: WS plugins and glove plugins could make problems! I did not test it with t
 
 ## Commands
 
-Info: `!gen` and `!gengl` are supported but are just aliases for `!pho gen`
+Info: `!gen` and `!gengl` are supported but are just aliases for `!pho gen`<br/>
 For `!i <inspect-url>` you should just paste the inspect url into the chat!
 
 | Syntax| Description |
