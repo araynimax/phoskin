@@ -94,6 +94,7 @@ Submit it [here](https://github.com/araynimax/phoskin/issues).
 ## Commands
 
 Info: `!gen` and `!gengl` are supported but are just aliases for `!pho gen`
+For `!i <inspect-url>` you should just paste the inspect url into the chat!
 
 | Syntax| Description |
 |---------|-------------|
