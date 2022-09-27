@@ -84,6 +84,8 @@ Submit it [here](https://github.com/araynimax/phoskin/issues).
 
 ### Installation
 
+Info: WS plugins and glove plugins could make problems! I did not test it with them active so you have to find out.
+
 0. Make sure you have installed the depedencies. (See Dependecies)
 1. Take a look into the [release section](https://github.com/araynimax/phoskin/releases) and download the newest version of phoskin
 2. Unzip the Zip-file in the servers "csgo" folder
