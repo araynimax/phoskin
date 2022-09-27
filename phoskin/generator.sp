@@ -100,7 +100,7 @@ int Pho_Weapon_SpawnOrGetWeaponFromDefIndex(int client, int defIndex, ESlot slot
 	{
 		if (g_cvDisableSpawn.IntValue == 1)
 		{
-			ShowErrorMessage(client, "Spawning weapons is disabled! You need to buy the specific weapon first!");
+			ShowErrorMessage(client, "Spawning weapons is disabled!");
 			return -1;
 		}
         

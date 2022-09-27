@@ -11,9 +11,9 @@
 public Plugin myinfo =
 {
 	name        = "phoskin",
-	author      = "Arayni <arayni.max@gmail.com>",
-	description = "preview any skin",
-	version     = "0.0.0",
-	url         = ""
+	author      = "Arayni",
+	description = "Preview any skin",
+	version     = "1.0.0",
+	url         = "https://github.com/araynimax/phoskin"
 };
 
