@@ -81,7 +81,7 @@ int Pho_Weapon_GivePlayerItem(int client, int defIndex)
 	return GivePlayerItem(client, itemName);
 }
 
-int Pho_Weapon_SpawnOrGetWeaponFromDefIndex(int client, int defIndex, ESlot slot, bool deleteExisting = false)
+int Pho_Weapon_SpawnOrGetWeaponFromDefIndex(int client, int defIndex, ESlot slot)
 {
 	int weapon;
 
@@ -341,12 +341,14 @@ void OnCSGOFloatResponse(HTTPResponse response, int client)
 
 			int slot          = jsonSticker.GetInt("slot");
 			stickers[slot].id = jsonSticker.GetInt("stickerId");
-			if (jsonSticker.HasKey("wear"))
+			if(jsonSticker.HasKey("wear")) 
 			{
-				stickers[slot].wear = jsonSticker.GetFloat("wear");
+			stickers[slot].wear = jsonSticker.GetFloat("wear");
+			if(jsonSticker.GetFloat("wear") == 0) {stickers[slot].wear = 1.0;}
 			}
 		}
-	} 
+	}
+	 
 
 	Pho_Generate(
 		client,
