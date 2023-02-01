@@ -35,7 +35,7 @@ void Pho_Generate(
 	}
 	else if (slot == ESlot_Glove) {
 		int activeWeapon = Pho_Gloves_PrepareForEdit(client);
-		int gloves       = Pho_Gloves_GetOrGenerateWearable(client);
+		int gloves       = Pho_Gloves_GenerateWearable(client);
 
 		if (gloves == -1)
 		{
@@ -47,6 +47,11 @@ void Pho_Generate(
 		Pho_Gloves_SetPaintIndex(gloves, paintIndex);
 		Pho_Gloves_SetPaintSeed(gloves, paintSeed);
 		Pho_Gloves_SetPaintWear(gloves, paintWear);
+
+		DispatchSpawn(gloves);
+
+		SetEntPropEnt(client, Prop_Send, "m_hMyWearables", gloves);
+		SetEntProp(client, Prop_Send, "m_nBody", 1);	
 
 		Pho_Gloves_Refresh(client, activeWeapon);
 	}
@@ -226,21 +231,21 @@ int Pho_Gloves_PrepareForEdit(int client)
 	return activeWeapon;
 }
 
-int Pho_Gloves_GetOrGenerateWearable(int client)
+int Pho_Gloves_GenerateWearable(int client)
 {
 	int gloves = GetEntPropEnt(client, Prop_Send, "m_hMyWearables");
-	if (gloves == -1)
+	if (gloves != -1)
 	{
-		gloves = CreateEntityByName("wearable_item");
-
-		SetEntPropEnt(gloves, Prop_Data, "m_hOwnerEntity", client);
-		SetEntPropEnt(gloves, Prop_Data, "m_hParent", client);
-		SetEntPropEnt(gloves, Prop_Data, "m_hMoveParent", client);
-		SetEntProp(gloves, Prop_Send, "m_bInitialized", 1);
-		SetEntPropEnt(client, Prop_Send, "m_hMyWearables", gloves);
-		SetEntProp(client, Prop_Send, "m_nBody", 1);
-		DispatchSpawn(gloves);
+		AcceptEntityInput(gloves, "KillHierarchy");
 	}
+
+	gloves = CreateEntityByName("wearable_item");
+
+	SetEntProp(gloves, Prop_Send, "m_iItemIDLow", -1);
+	SetEntPropEnt(gloves, Prop_Data, "m_hOwnerEntity", client);
+	SetEntPropEnt(gloves, Prop_Data, "m_hParent", client);
+	SetEntPropEnt(gloves, Prop_Data, "m_hMoveParent", client);
+	SetEntProp(gloves, Prop_Send, "m_bInitialized", 1);
 
 	return gloves;
 }
