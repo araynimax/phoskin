@@ -289,7 +289,7 @@ public Action Command_Pho(int client, int args)
 		}
 	}
 	else if (StrEqual(command, "gloves")) {
-		if (args <= 2)
+		if (args < 2)
 		{
 			PrintHelp(client);
 			return Plugin_Handled;
