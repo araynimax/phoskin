@@ -26,3 +26,13 @@ void GiveNamedItemPost(int client, const char[] classname, const CEconItemView i
 		}
 	}
 }
+
+Action WeaponCanUsePre(int client, int weapon, bool& pickup)
+{
+	if (IsKnife(weapon) && IsValidClient(client))
+	{
+		pickup = true;
+		return Plugin_Changed;
+	}
+	return Plugin_Continue;
+}

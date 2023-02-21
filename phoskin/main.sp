@@ -25,4 +25,12 @@ public void OnPluginStart()
     // Hooks
 	PTaH(PTaH_GiveNamedItemPre, Hook, GiveNamedItemPre);
 	PTaH(PTaH_GiveNamedItemPost, Hook, GiveNamedItemPost);
+
+	ConVar g_cvGameType = FindConVar("game_type");
+	ConVar g_cvGameMode = FindConVar("game_mode");
+	
+	if(g_cvGameType.IntValue == 1 && g_cvGameMode.IntValue == 2)
+	{
+		PTaH(PTaH_WeaponCanUsePre, Hook, WeaponCanUsePre);
+	}
 }

@@ -110,6 +110,22 @@ bool IsKnifeClass(const char[] classname)
 	return false;
 }
 
+ESlot GetItemSlot(int entity)
+{
+	int id = GetEntProp(entity, Prop_Send, "m_iItemDefinitionIndex");
+	return GetItemSlotFromDefIndex(id)
+}
+
+bool IsKnife(int entity)
+{
+	ESlot slot = GetItemSlot(entity);
+
+	if (slot == ESlot_Knife)
+		return true;
+
+	return false;
+}
+
 
 Regex re_steamInspectUrl = null;
 public bool IsInspectUrl(char[] string)
