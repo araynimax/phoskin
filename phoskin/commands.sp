@@ -5,9 +5,9 @@ void PrintHelp(int client)
 		Pho_PrintToChat(client, "See console output");
 	}
 
-	PrintToConsole(client, "Welcome to phoskin!\n\n");
+	PrintToConsole(client, "Welcome to phoskin!\nhttps://github.com/araynimax/phoskin\n\n");
 	PrintToConsole(client, "If you want to generate a weapon from an inspect link, just paste the url into the chat. This plugin will detect any inspect-url automatically!\n\n");
-	PrintToConsole(client, "Usage sm_pho <command> [arguments]");
+	PrintToConsole(client, "Usage sm_%s <command> [arguments]", g_command);
 	PrintToConsole(client, "    help");
 	PrintToConsole(client, "        Show this help");
 	PrintToConsole(client, "    gen <defIndex> <paintIndex> <paintSeed> <paintWear> [<stickerslot1> <stickerslot1wear>...]");
@@ -64,7 +64,7 @@ public Action Command_Pho(int client, int args)
 	else if (StrEqual(command, "skin")) {
 		if (args < 2)
 		{
-			ShowErrorMessage(client, "Usage: !pho skin <paintIndex>");
+			ShowErrorMessage(client, "Usage: !%s skin <paintIndex>", g_command);
 			return Plugin_Handled;
 		}
 
@@ -131,7 +131,7 @@ public Action Command_Pho(int client, int args)
 	else if (StrEqual(command, "float")) {
 		if (args < 2)
 		{
-			ShowErrorMessage(client, "Usage: !pho float <paintWear>");
+			ShowErrorMessage(client, "Usage: !%s float <paintWear>", g_command);
 			return Plugin_Handled;
 		}
 
@@ -163,7 +163,7 @@ public Action Command_Pho(int client, int args)
 	else if (StrEqual(command, "stattrak")) {
 		if (args < 2)
 		{
-			ShowErrorMessage(client, "Usage: !pho stattrak <1|0> [count]");
+			ShowErrorMessage(client, "Usage: !%s stattrak <1|0> [count]", g_command);
 			return Plugin_Handled;
 		}
 
@@ -311,7 +311,7 @@ public Action Command_Pho(int client, int args)
 		{
 			if (args < 3)
 			{
-				ShowErrorMessage(client, "Usage: !pho gloves skin <paintIndex>");
+				ShowErrorMessage(client, "Usage: !%s gloves skin <paintIndex>",g_command);
 				return Plugin_Handled;
 			}
 
@@ -365,7 +365,7 @@ public Action Command_Pho(int client, int args)
 		{
 			if (args < 3)
 			{
-				ShowErrorMessage(client, "Usage: !pho gloves float <paintWear>");
+				ShowErrorMessage(client, "Usage: !%s gloves float <paintWear>",g_command);
 				return Plugin_Handled;
 			}
 
@@ -396,7 +396,7 @@ public void GenerateCommand(int client, int args, int offset)
 {
 	if (args < 4 + offset)
 	{
-		ShowErrorMessage(client, " \x01\x0B\x07Usage: !pho gen <defIndex> <paintIndex> <paintSeed> <paintWear> [<stickerslot1> <stickerslot1wear>...]");
+		ShowErrorMessage(client, " \x01\x0B\x07Usage: !%s gen <defIndex> <paintIndex> <paintSeed> <paintWear> [<stickerslot1> <stickerslot1wear>...]", g_command);
 		return;
 	}
 

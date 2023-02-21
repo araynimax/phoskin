@@ -5,8 +5,10 @@ void Pho_PrintToChat(int client, char[] format, any ...) {
     PrintToChat(client, " %s %s", g_prefix, output);
 }
 
-void ShowErrorMessage(int client, const char[] msg) {
-	Pho_PrintToChat(client, "\x07Error: %s", msg);
+void ShowErrorMessage(int client, const char[] format, any ...) {
+	char output[128];
+    VFormat(output, sizeof(output), format, 3);
+	Pho_PrintToChat(client, "\x07Error: %s", output);
 }
 
 ESlot GetItemSlotFromDefIndex(int defIndex) {
