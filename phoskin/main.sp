@@ -7,11 +7,6 @@
 
 public void OnPluginStart()
 {
-	// Load ConVars
-	g_cvEnabled         = CreateConVar("sm_phoskin_enabled", "1", "Enable/disable phoskin globally", true, 0, true, 1);
-	g_cvDisableSpawn    = CreateConVar("sm_phoskin_disable_spawn", "0", "if enabled only exiting weapons can be edited", true, 0, true, 1);
-	g_cvTimeoutDuration = CreateConVar("sm_phoskin_timeout_duration", "0", "how long a player has to wait to generate a new weapon after generating a weapon from a inspect url", true, 0);
-
 	// Commands
 	RegConsoleCmd("sm_pho", Command_Pho, "Type sm_pho help for a list of commands");
 
