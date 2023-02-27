@@ -11,7 +11,8 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_pho", Command_Pho, "Type sm_pho help for a list of commands");
 
 	// if g_command is not pho, register the alias
-	if(strcmp(g_command, "pho") != 0) {
+	if (strcmp(g_command, "pho") != 0)
+	{
 		// combine string
 		char g_command_alias[32];
 		Format(g_command_alias, sizeof(g_command_alias), "sm_%s", g_command);
@@ -22,19 +23,14 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_gengl", Command_Gen, "Alias for sm_pho gen");
 
 	// ChatListener
-    AddCommandListener(ChatListener, "say");
+	AddCommandListener(ChatListener, "say");
 	AddCommandListener(ChatListener, "say2");
 	AddCommandListener(ChatListener, "say_team");
 
-    // Hooks
-	PTaH(PTaH_GiveNamedItemPre, Hook, GiveNamedItemPre);
-	PTaH(PTaH_GiveNamedItemPost, Hook, GiveNamedItemPost);
+	// AddCommandListener(Command_Drop, "drop");
 
-	ConVar g_cvGameType = FindConVar("game_type");
-	ConVar g_cvGameMode = FindConVar("game_mode");
-	
-	if(g_cvGameType.IntValue == 1 && g_cvGameMode.IntValue == 2)
-	{
-		PTaH(PTaH_WeaponCanUsePre, Hook, WeaponCanUsePre);
-	}
+	// Hooks
+	// PTaH(PTaH_GiveNamedItemPre, Hook, GiveNamedItemPre);
+	// PTaH(PTaH_GiveNamedItemPost, Hook, GiveNamedItemPost);
+	PTaH(PTaH_WeaponCanUsePre, Hook, WeaponCanUsePre);
 }

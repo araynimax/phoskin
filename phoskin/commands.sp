@@ -75,8 +75,8 @@ public Action Command_Pho(int client, int args)
 			return Plugin_Handled;
 		}
 
-		int   defIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
-		ESlot slot     = GetItemSlotFromDefIndex(defIndex);
+		int	  defIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
+		ESlot slot	   = GetItemSlotFromDefIndex(defIndex);
 
 		if (slot != ESlot_Primary && slot != ESlot_Secondary && slot != ESlot_Knife)
 		{
@@ -109,8 +109,8 @@ public Action Command_Pho(int client, int args)
 			return Plugin_Handled;
 		}
 
-		int   defIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
-		ESlot slot     = GetItemSlotFromDefIndex(defIndex);
+		int	  defIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
+		ESlot slot	   = GetItemSlotFromDefIndex(defIndex);
 
 		if (slot != ESlot_Primary && slot != ESlot_Secondary && slot != ESlot_Knife)
 		{
@@ -142,8 +142,8 @@ public Action Command_Pho(int client, int args)
 			return Plugin_Handled;
 		}
 
-		int   defIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
-		ESlot slot     = GetItemSlotFromDefIndex(defIndex);
+		int	  defIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
+		ESlot slot	   = GetItemSlotFromDefIndex(defIndex);
 
 		if (slot != ESlot_Primary && slot != ESlot_Secondary && slot != ESlot_Knife)
 		{
@@ -153,7 +153,7 @@ public Action Command_Pho(int client, int args)
 
 		char buff[64];
 		GetCmdArg(2, buff, sizeof(buff));
-		int paintWear = StringToFloat(buff);
+		float paintWear = StringToFloat(buff);
 
 		Pho_Weapon_SetPaintWear(weapon, paintWear);
 		Pho_Weapon_Refresh(client, weapon, false);
@@ -174,8 +174,8 @@ public Action Command_Pho(int client, int args)
 			return Plugin_Handled;
 		}
 
-		int   defIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
-		ESlot slot     = GetItemSlotFromDefIndex(defIndex);
+		int	  defIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
+		ESlot slot	   = GetItemSlotFromDefIndex(defIndex);
 
 		if (slot != ESlot_Primary && slot != ESlot_Secondary && slot != ESlot_Knife)
 		{
@@ -183,8 +183,8 @@ public Action Command_Pho(int client, int args)
 			return Plugin_Handled;
 		}
 
-		int enabled;
-		int count = 1337;
+		int	 enabled;
+		int	 count = 1337;
 
 		char buff[64];
 		GetCmdArg(2, buff, sizeof(buff));
@@ -192,12 +192,12 @@ public Action Command_Pho(int client, int args)
 
 		if (args >= 3)
 		{
-			char buff[64];
-			GetCmdArg(3, buff, sizeof(buff));
-			count = StringToInt(buff);
+			char buff2[64];
+			GetCmdArg(3, buff2, sizeof(buff2));
+			count = StringToInt(buff2);
 		}
 
-		Pho_Weapon_SetStattrak(weapon, enabled, count, slot != ESlot_Knife);
+		Pho_Weapon_SetStattrak(weapon, enabled == 1, count, slot != ESlot_Knife);
 		Pho_Weapon_Refresh(client, weapon, true);
 
 		if (enabled)
@@ -216,8 +216,8 @@ public Action Command_Pho(int client, int args)
 			return Plugin_Handled;
 		}
 
-		int   defIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
-		ESlot slot     = GetItemSlotFromDefIndex(defIndex);
+		int	  defIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
+		ESlot slot	   = GetItemSlotFromDefIndex(defIndex);
 
 		if (slot != ESlot_Primary && slot != ESlot_Secondary && slot != ESlot_Knife)
 		{
@@ -230,8 +230,8 @@ public Action Command_Pho(int client, int args)
 		if (args >= 2)
 		{
 			char buff[64];
-			int  currentStickerIndex = 0;
-			int  currentArgindex     = 2;
+			int	 currentStickerIndex = 0;
+			int	 currentArgindex	 = 2;
 			while (currentArgindex <= args)
 			{
 				GetCmdArg(currentArgindex, buff, sizeof(buff));
@@ -307,11 +307,12 @@ public Action Command_Pho(int client, int args)
 		{
 			ShowErrorMessage(client, "Not implemented yet. Just respawn to reset your skins!");
 			return Plugin_Handled;
-		} else if (StrEqual(sub_command, "skin"))
+		}
+		else if (StrEqual(sub_command, "skin"))
 		{
 			if (args < 3)
 			{
-				ShowErrorMessage(client, "Usage: !%s gloves skin <paintIndex>",g_command);
+				ShowErrorMessage(client, "Usage: !%s gloves skin <paintIndex>", g_command);
 				return Plugin_Handled;
 			}
 
@@ -325,7 +326,7 @@ public Action Command_Pho(int client, int args)
 
 			char buff[64];
 			GetCmdArg(3, buff, sizeof(buff));
-			int paintIndex = StringToInt(buff);
+			int paintIndex	 = StringToInt(buff);
 
 			int activeWeapon = Pho_Gloves_PrepareForEdit(client);
 			Pho_Gloves_SetPaintIndex(gloves, paintIndex);
@@ -365,7 +366,7 @@ public Action Command_Pho(int client, int args)
 		{
 			if (args < 3)
 			{
-				ShowErrorMessage(client, "Usage: !%s gloves float <paintWear>",g_command);
+				ShowErrorMessage(client, "Usage: !%s gloves float <paintWear>", g_command);
 				return Plugin_Handled;
 			}
 
@@ -379,9 +380,9 @@ public Action Command_Pho(int client, int args)
 
 			char buff[64];
 			GetCmdArg(3, buff, sizeof(buff));
-			float paintWear = StringToFloat(buff);
+			float paintWear	   = StringToFloat(buff);
 
-			int activeWeapon = Pho_Gloves_PrepareForEdit(client);
+			int	  activeWeapon = Pho_Gloves_PrepareForEdit(client);
 			Pho_Gloves_SetPaintWear(gloves, paintWear);
 
 			Pho_Gloves_Refresh(client, activeWeapon);
@@ -401,8 +402,7 @@ public void GenerateCommand(int client, int args, int offset)
 	}
 
 	char buff[64];
-	int  currentIndex = 1 + offset;
-	bool anyStickers  = false;
+	int	 currentIndex = 1 + offset;
 
 	GetCmdArg(currentIndex++, buff, sizeof(buff));
 	int defIndex = StringToInt(buff);
@@ -414,12 +414,12 @@ public void GenerateCommand(int client, int args, int offset)
 	int paintSeed = StringToInt(buff);
 
 	GetCmdArg(currentIndex++, buff, sizeof(buff));
-	float paintWear = StringToFloat(buff);
+	float		 paintWear = StringToFloat(buff);
 
 	SStickerData stickers[MAX_STICKER_SLOTS];
 	for (int i = 0; i < MAX_STICKER_SLOTS; i++)
 	{
-		stickers[i].id   = 0;
+		stickers[i].id	 = 0;
 		stickers[i].wear = 0.0;
 	}
 
@@ -449,6 +449,7 @@ public void GenerateCommand(int client, int args, int offset)
 public Action Command_Gen(int client, int args)
 {
 	GenerateCommand(client, args, 0);
+	return Plugin_Handled;
 }
 
 public Action ChatListener(int client, const char[] command, int args)
@@ -463,12 +464,18 @@ public Action ChatListener(int client, const char[] command, int args)
 	StripQuotes(msg);
 
 	if (
-		StrContains(msg, "!gen") == 0 ||
-		StrContains(msg, "!gengl") == 0 ||
-		StrContains(msg, "!pho") == 0
-	)
+		StrContains(msg, "!gen") == 0 || StrContains(msg, "!gengl") == 0 || StrContains(msg, "!pho") == 0)
 	{
 		return Plugin_Handled;
+	}
+
+
+
+	if(StrContains(msg, "!inspect ") == 0) {
+		ReplaceString(msg, sizeof(msg), "!inspect ", "");
+	} else if(StrContains(msg, "!i ") == 0)
+	{
+		ReplaceString(msg, sizeof(msg), "!i ", "");
 	}
 
 	if (IsInspectUrl(msg))
@@ -478,4 +485,15 @@ public Action ChatListener(int client, const char[] command, int args)
 	}
 
 	return Plugin_Continue;
+}
+
+public Action Command_Drop(int client, const char[] command, int args)
+{
+	if (!IsValidClient(client)) return Plugin_Continue;
+	int weapon = GetEntPropEnt(client, Prop_Send, "m_hActiveWeapon");
+	if (!IsKnife(weapon)) return Plugin_Continue;
+
+	CS_DropWeaponCustom(client, weapon, true, true);
+
+	return Plugin_Handled;
 }
