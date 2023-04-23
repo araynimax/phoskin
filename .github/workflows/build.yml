@@ -1,0 +1,53 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: 
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    concurrency:
+      group: ${{ github.ref }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.10.2
+        with:
+          versionSpec: '5.x'
+          includePrerelease: true
+
+      # TODO: Use GitVersion in the future maybe for phoskin 2.0
+      # - run: git fetch --unshallow
+      # - name: Determine Version
+      #   uses: gittools/actions/gitversion/execute@v0.10.2
+
+      # - name: Set Version
+      #   id: set_version
+      #   run: echo ::set-output name=version::${{ steps.gitversion.outputs.FullSemVer }}
+
+      - name: Setup Sourcemod
+        uses: rumblefrog/setup-sp@master
+        with:
+          version: '1.12.x'
+
+      - name: Build sourcemod
+        run: |
+          mkdir -p addons/sourcemod/plugins
+          spcomp -i ./include "phoskin.sp" -o "addons/sourcemod/plugins/phoskin.smx"
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: phoskin
+          path: addons/sourcemod/plugins/phoskin.smx
+
