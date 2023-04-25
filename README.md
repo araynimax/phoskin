@@ -19,6 +19,8 @@
   <p align="center">
     Sourcemod plugin to preview/generate any skins
     <br />
+    <h2 align="center"><a href="#important">READ THIS BEFORE USING</a></h2>
+    <br />
     <h3 align="center">!!!!! Valve banned servers using skin plugins in the past! Use it at your own risk !!!!!</h3>
     <br />
     <br />
@@ -35,6 +37,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
     </li>
+    <li><a href="#important">Important</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#upcoming-features">Upcoming features</a></li>
     <li><a href="#installation">Installation</a></li>
@@ -60,6 +63,21 @@ With the help of existing skin changer plugins from kgns:
 
 I managed to create my own version of it named - phoskin -
 The codebase is not the best I've made in my life, but its just a small plugin so what. Feel free to make pullrequest to change that!
+
+### Important
+
+Valve changed rate limits. csgofloat currently blocks automatic requests from their public api. Maybe they will change it again. Currently you have to host your own version of csgofloat to use skin generation from inspect urls. 
+Read more about it here:
+  - https://github.com/csgofloat/inspect/issues/131
+  - https://twitter.com/csgofloat/status/1648717278589112320?s=20
+
+How to host your own version of csgofloat:
+  - https://github.com/csgofloat/inspect#how-to-install
+
+You need to switch the url in the plugin via the convar `pho_inspect_url "https://your_endpoint.de` to your own hosted version of csgofloat.
+
+Keep in mind that this convar is only read on plugin start. So you have to restart the plugin after changing the convar.
+
 
 ### Features
 

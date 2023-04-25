@@ -13,6 +13,6 @@ public Plugin myinfo =
 	name		= "phoskin",
 	author		= "Arayni",
 	description = "Preview any skin",
-	version		= "1.2.0",
+	version		= "1.2.1",
 	url			= "https://github.com/araynimax/phoskin"
 };
