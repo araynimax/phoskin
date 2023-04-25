@@ -469,8 +469,6 @@ public Action ChatListener(int client, const char[] command, int args)
 		return Plugin_Handled;
 	}
 
-
-
 	if(StrContains(msg, "!inspect ") == 0) {
 		ReplaceString(msg, sizeof(msg), "!inspect ", "");
 	} else if(StrContains(msg, "!i ") == 0)
@@ -480,6 +478,9 @@ public Action ChatListener(int client, const char[] command, int args)
 
 	if (IsInspectUrl(msg))
 	{
+		// replace %20 with spaces
+		ReplaceString(msg, sizeof(msg), "%20", " ");
+
 		Pho_GenerateFromInspectUrl(client, msg);
 		return Plugin_Handled;
 	}
