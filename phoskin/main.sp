@@ -7,6 +7,12 @@
 
 public void OnPluginStart()
 {
+	// convar pho_inspect_url
+	g_cvar_inspect_url = CreateConVar("pho_inspect_url", "https://api.csgofloat.com/", "URL to inspect page");
+
+	// get inspect url 
+	g_cvar_inspect_url.GetString(g_inspect_url, sizeof(g_inspect_url));
+
 	// Commands
 	RegConsoleCmd("sm_pho", Command_Pho, "Type sm_pho help for a list of commands");
 

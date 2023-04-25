@@ -337,12 +337,10 @@ public Action Timer_ResetGloves(Handle timer, DataPack pack)
 
 void Pho_GenerateFromInspectUrl(int client, char[] inspectUrl)
 {
-	char url[256];
-	Format(url, sizeof(url), "https://api.csgofloat.com/?url=%s", inspectUrl);
-
 	Pho_PrintToChat(client, "\x08Fetching item information...");
 
-	HTTPRequest request = new HTTPRequest(url);
+	HTTPRequest request = new HTTPRequest(g_inspect_url);
+	request.AppendQueryParam("url", inspectUrl)
 	request.Get(OnCSGOFloatResponse, client);
 }
 
