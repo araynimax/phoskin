@@ -75,7 +75,9 @@ How to host your own version of csgofloat:
   - https://github.com/csgofloat/inspect#how-to-install
 
 You need to switch the url in the plugin via the convar pho_inspect_url.
+
 Put the following line into your server.cfg:
+
 `pho_inspect_url "https://your_endpoint.de"`
 
 Keep in mind that this convar is only read on plugin start. So you have to restart the plugin after changing the convar.
