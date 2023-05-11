@@ -339,7 +339,11 @@ void Pho_GenerateFromInspectUrl(int client, char[] inspectUrl)
 {
 	Pho_PrintToChat(client, "\x08Fetching item information...");
 
-	HTTPRequest request = new HTTPRequest(g_inspect_url);
+    char apiURL[256];
+	// get api url 
+	g_cvar_inspect_url.GetString(apiURL, sizeof(apiURL));
+
+	HTTPRequest request = new HTTPRequest(apiURL);
 	request.AppendQueryParam("url", inspectUrl)
 	request.Get(OnCSGOFloatResponse, client);
 }
